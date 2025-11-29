@@ -1,0 +1,253 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+
+:root {
+    --bg-color: #0f172a;
+    --card-bg: rgba(30, 41, 59, 0.7);
+    --text-main: #f8fafc;
+    --text-sub: #94a3b8;
+    --accent: #38bdf8;
+    --accent-hover: #0ea5e9;
+    --glass-border: rgba(255, 255, 255, 0.1);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--bg-color);
+    background-image:
+        radial-gradient(at 0% 0%, rgba(56, 189, 248, 0.15) 0px, transparent 50%),
+        radial-gradient(at 100% 100%, rgba(139, 92, 246, 0.15) 0px, transparent 50%);
+    color: var(--text-main);
+    font-family: 'Inter', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    line-height: 1.6;
+    padding: 20px;
+    position: relative;
+    /* For absolute positioning of lang selector */
+    overflow: hidden;
+    /* Disable scroll on desktop */
+}
+
+/* Enable scroll on mobile or small screens */
+@media (max-width: 768px),
+(max-height: 700px) {
+    body {
+        overflow-y: auto;
+        height: auto;
+        min-height: 100vh;
+        display: block;
+        /* Allow normal flow on mobile */
+    }
+
+    .container {
+        margin: 40px auto;
+        /* Add some space */
+    }
+}
+
+/* Language Dropdown */
+.lang-dropdown {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    display: inline-block;
+    z-index: 100;
+}
+
+.dropbtn {
+    background-color: var(--card-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    color: white;
+    padding: 10px 15px;
+    font-size: 1.5rem;
+    border: 1px solid var(--glass-border);
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dropbtn:hover,
+.lang-dropdown:hover .dropbtn {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: var(--accent);
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    right: 0;
+    background-color: var(--card-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    min-width: 160px;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+    border-radius: 12px;
+    border: 1px solid var(--glass-border);
+    overflow: visible;
+    /* Changed from hidden to allow pseudo-element */
+    margin-top: 5px;
+}
+
+/* Invisible bridge to prevent menu from closing when moving cursor */
+.dropdown-content::before {
+    content: "";
+    position: absolute;
+    top: -10px;
+    /* Covers the gap */
+    left: 0;
+    width: 100%;
+    height: 10px;
+    background: transparent;
+}
+
+.dropdown-content a {
+    color: var(--text-main);
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    font-size: 0.95rem;
+    transition: background-color 0.2s;
+}
+
+.dropdown-content a:hover {
+    background-color: rgba(56, 189, 248, 0.2);
+    color: var(--accent);
+}
+
+.lang-dropdown:hover .dropdown-content {
+    display: block;
+    animation: fadeIn 0.2s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.container {
+    background-color: var(--card-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border);
+    padding: 2rem 2rem;
+    /* Reduced padding */
+    border-radius: 24px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    max-width: 420px;
+    width: 100%;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.container:hover {
+    transform: translateY(-5px);
+}
+
+.profile-img {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid var(--bg-color);
+    box-shadow: 0 0 0 4px var(--accent);
+    margin-bottom: 1rem;
+    /* Reduced margin */
+    background-color: var(--card-bg);
+}
+
+h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+    /* Reduced margin */
+    background: linear-gradient(to right, #fff, #cbd5e1);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.tagline {
+    color: var(--accent);
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 1rem;
+    /* Reduced margin */
+    display: inline-block;
+}
+
+.bio {
+    color: var(--text-sub);
+    margin-bottom: 1.5rem;
+    /* Reduced margin */
+    font-size: 1rem;
+}
+
+.links {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background-color: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--glass-border);
+    color: var(--text-main);
+    padding: 14px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn:hover {
+    background-color: var(--accent);
+    border-color: var(--accent);
+    color: var(--bg-color);
+    transform: scale(1.02);
+    box-shadow: 0 10px 15px -3px rgba(56, 189, 248, 0.3);
+}
+
+.btn svg {
+    width: 20px;
+    height: 20px;
+    fill: currentColor;
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 2rem 1.5rem;
+    }
+
+    h1 {
+        font-size: 1.75rem;
+    }
+
+    .lang-selector {
+        top: 10px;
+        right: 10px;
+    }
+}
